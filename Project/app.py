@@ -31,8 +31,17 @@ def hello():
 @app.route('/api')
 def api():
     # return 'API ENdpoint'
-    file= open("products.json", "r")
-    json_data = file.read()
+    file= open("products.json", "w")
+    json_data = file.writelines("[This is a change in the JSON File]");
+    json_data = {
+        "name": "nail polish",
+        "price": 80,
+        "description": "Purple Colour"
+
+
+    }
+    file.write(json.dumps(json_data, indent=4))
+    
     file.close()
     return json_data
 
